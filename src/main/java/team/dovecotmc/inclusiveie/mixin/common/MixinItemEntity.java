@@ -1,4 +1,4 @@
-package team.dovecotmc.inclusiveie.mixin;
+package team.dovecotmc.inclusiveie.mixin.common;
 
 import net.minecraft.stats.Stats;
 import net.minecraft.world.entity.Entity;
