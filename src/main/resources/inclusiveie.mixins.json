@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "team.dovecotmc.inclusiveie.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "common.MixinItemEntity"
+  ],
+  "client": [
+    "client.MixinItemEntityRenderer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "inclusiveie",
+  "version": "${version}",
+  "name": "inclusiveie",
+  "description": "Increase the item entities' max capable stack size to Integer.MAX_VALUE",
+  "authors": [
+    "Tapio"
+  ],
+  "contact": {
+    "repo": "https://github.com/DoveCotMC/InclusiveItemEntities"
+  },
+  "license": "Nova-Relay-License-1.0",
+  "environment": "*",
+  "mixins": [
+    "inclusiveie.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*"
+  }
+}
