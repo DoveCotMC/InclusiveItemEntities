@@ -7,10 +7,10 @@
   "mixins": [
     "common.MixinItemEntity"
   ],
-  "injectors": {
-    "defaultRequire": 1
-  },
   "client": [
     "client.MixinItemEntityRenderer"
-  ]
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
