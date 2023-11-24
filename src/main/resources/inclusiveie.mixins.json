@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "team.dovecotmc.inclusiveie.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "inclusiveie.refmap.json",
+  "mixins": [
+    "MixinItemEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
