@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ItemEntityRenderer.class)
-public class MixinItemEntityRenderer {
+public abstract class MixinItemEntityRenderer {
     @Inject(method = "getRenderAmount", at = @At("HEAD"), cancellable = true)
     private void inject$getRenderAmount(ItemStack pStack, CallbackInfoReturnable<Integer> cir) {
         int i = 1;
