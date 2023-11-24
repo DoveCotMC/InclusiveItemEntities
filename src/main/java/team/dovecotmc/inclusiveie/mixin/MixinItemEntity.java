@@ -28,7 +28,7 @@ public abstract class MixinItemEntity extends Entity {
 
     @Shadow
     @Nullable
-    private UUID target;
+    private UUID owner;
 
     public MixinItemEntity(EntityType<?> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -66,7 +66,7 @@ public abstract class MixinItemEntity extends Entity {
     @Inject(method = "playerTouch", at = @At("HEAD"), cancellable = true)
     private void inject$playerTouch(Player pEntity, CallbackInfo ci) {
         ci.cancel();
-        if (!this.level().isClientSide) {
+        if (!this.level.isClientSide) {
             if (this.pickupDelay > 0) return;
             ItemStack itemstack = this.getItem();
             Item item = itemstack.getItem();
@@ -75,7 +75,7 @@ public abstract class MixinItemEntity extends Entity {
             if (hook < 0) return;
             ItemStack copy = itemstack.copy();
             boolean shouldContinue = i <= 0 || hook == 1;
-            if (this.pickupDelay == 0 && (this.target == null || this.target.equals(pEntity.getUUID()))) {
+            if (this.pickupDelay == 0 && (this.owner == null || this.owner.equals(pEntity.getUUID()))) {
                 pEntity.getInventory().add(itemstack);
                 i = copy.getCount() - itemstack.getCount();
                 if (!shouldContinue && i == 0) return;
