@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.event.ForgeEventFactory;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
@@ -70,7 +71,7 @@ public abstract class MixinItemEntity extends Entity {
             ItemStack itemstack = this.getItem();
             Item item = itemstack.getItem();
             int i = itemstack.getCount();
-            int hook = net.minecraftforge.event.ForgeEventFactory.onItemPickup((ItemEntity) (Object) this, pEntity);
+            int hook = ForgeEventFactory.onItemPickup((ItemEntity) (Object) this, pEntity);
             if (hook < 0) return;
             ItemStack copy = itemstack.copy();
             boolean shouldContinue = i <= 0 || hook == 1;
@@ -79,7 +80,7 @@ public abstract class MixinItemEntity extends Entity {
                 i = copy.getCount() - itemstack.getCount();
                 if (!shouldContinue && i == 0) return;
                 copy.setCount(i);
-                net.minecraftforge.event.ForgeEventFactory.firePlayerItemPickupEvent(pEntity, (ItemEntity) (Object) this, copy);
+                ForgeEventFactory.firePlayerItemPickupEvent(pEntity, (ItemEntity) (Object) this, copy);
                 pEntity.take(this, i);
                 if (itemstack.isEmpty()) {
                     this.discard();
